@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Love Letter</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* BODY & BACKGROUND */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+  animation: bgGradient 15s ease infinite;
+  position: relative;
+}
+
+@keyframes bgGradient {
+  0% { background: linear-gradient(120deg, #ffdde1, #ee9ca7); }
+  50% { background: linear-gradient(120deg, #fceabb, #f8b500); }
+  100% { background: linear-gradient(120deg, #ffdde1, #ee9ca7); }
+}
+
+/* CARD */
+.card {
+  background: rgba(255, 248, 240, 0.95);
+  border-radius: 25px;
+  padding: 50px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 10;
+  animation: cardGlow 3s ease infinite alternate;
+}
+
+@keyframes cardGlow {
+  0% { box-shadow: 0 20px 50px rgba(255,20,147,0.3); }
+  100% { box-shadow: 0 25px 60px rgba(255,20,147,0.7); }
+}
+
+/* TEXT */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 50px;
+  color: #ff1493;
+  margin-bottom: 20px;
+  animation: slideDown 2s ease forwards;
+}
+
+p {
+  font-family: 'Lobster', cursive;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.8;
+  animation: fadeIn 3s ease forwards;
+}
+
+/* TEXT ANIMATIONS */
+@keyframes slideDown { from { transform: translateY(-30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* HEARTS ANIMATION */
+.heart {
+  position: absolute;
+  font-size: 20px;
+  user-select: none;
+  pointer-events: none;
+  animation: floatHeart linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatHeart {
+  0% { transform: translateY(100vh) rotate(0deg) scale(0.5); opacity:0; }
+  20% { opacity:1; }
+  50% { transform: translateY(50vh) rotate(180deg) scale(1); }
+  100% { transform: translateY(-50px) rotate(360deg) scale(0.5); opacity:0; }
+}
+
+/* SPARKLES */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff0f5;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: sparkleAnim linear infinite;
+  z-index: 5;
+}
+
+@keyframes sparkleAnim {
+  0% { transform: scale(0); opacity:0; }
+  50% { transform: scale(1.5); opacity:1; }
+  100% { transform: scale(0); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEARTS -->
+<div id="hearts"></div>
+
+<!-- SPARKLES -->
+<div id="sparkles"></div>
+
+<!-- LOVE LETTER CARD -->
+<div class="card">
+  <h1>To My Love ❤️</h1>
+  <p>
+    Every moment with you feels like a dream come true.<br>
+    Your smile lights up my world and your love warms my heart.Eeee letter ooorke aallllla chesthunaaa.Malli baga chesi estha le ok na baby...<br><br>
+    I cherish you today, tomorrow, and forever.Neeee bday chala grand ga chedham anukunna ammuuu kani emo time baled nanna em kad nen neetho ne vunta nanna ummmmu luv u bangarm.....<br><br>
+    With all my love,<br>
+    <b>Neee bava
+    </b>
+  </p>
+</div>
+
+<script>
+  // Floating hearts
+  const heartsContainer = document.getElementById('hearts');
+  for(let i=0;i<50;i++){
+    let heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random()*window.innerWidth+'px';
+    heart.style.fontSize = 15+Math.random()*30+'px';
+    heart.style.animationDuration = 4+Math.random()*6+'s';
+    heart.innerText = '❤️';
+    heartsContainer.appendChild(heart);
+  }
+
+  // Sparkles
+  const sparklesContainer = document.getElementById('sparkles');
+  for(let i=0;i<50;i++){
+    let sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random()*window.innerWidth+'px';
+    sparkle.style.top = Math.random()*window.innerHeight+'px';
+    sparkle.style.animationDuration = 2+Math.random()*3+'s';
+    sparkle.style.width = sparkle.style.height = 3+Math.random()*5+'px';
+    sparklesContainer.appendChild(sparkle);
+  }
+</script>
+
+</body>
+</html>
